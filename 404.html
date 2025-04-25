@@ -17,11 +17,10 @@
     }
   </style>
   <script>
-    const basePath = '/eccos-portal-digital';
-    const path = window.location.pathname.replace(basePath, '');
-    sessionStorage.setItem('redirectPath', currentPath);
-    
-    window.location.href = repoPath + '/index.html';
+    const basePath = "/Tecnologia-ECCOS";
+    const currentPath = window.location.pathname;
+    sessionStorage.setItem("redirectPath", currentPath);
+    window.location.replace(basePath + "/index.html");
   </script>
 </head>
 <body>
