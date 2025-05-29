@@ -1,50 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
     <title>Redirecionando...</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        flex-direction: column;
-      }
-      .loader {
-        width: 48px;
-        height: 48px;
-        border: 5px solid #000;
-        border-bottom-color: transparent;
-        border-radius: 50%;
-        display: inline-block;
-        animation: rotation 1s linear infinite;
-        margin-top: 16px;
-      }
-      @keyframes rotation {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-    </style>
     <script>
-      const basePath = "/Tecnologia-ECCOS";
-      const currentPath = window.location.pathname;
-
-      // Salva o caminho original para redirecionar depois dentro do app
-      sessionStorage.setItem("redirectPath", currentPath);
-
-      // Redireciona para o index.html dentro do repositório
-      window.location.replace(`${basePath}/index.html`);
+        // Captura o caminho completo atual
+        const fullPath = window.location.pathname + window.location.search;
+        
+        // Remove o base path se estiver presente
+        const basePath = "/Tecnologia-ECCOS";
+        const cleanPath = fullPath.startsWith(basePath) 
+            ? fullPath.slice(basePath.length) 
+            : fullPath;
+        
+        // Armazena para uso no app React
+        sessionStorage.setItem("redirectPath", cleanPath || "/");
+        
+        // Redireciona para a raiz do app
+        window.location.replace(basePath + "/");
     </script>
-  </head>
-  <body>
-    <p>Carregando a aplicação...</p>
-    <span class="loader"></span>
-  </body>
+</head>
+<body>
+    <p>Redirecionando para a aplicação...</p>
+</body>
 </html>
